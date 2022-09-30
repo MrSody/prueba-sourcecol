@@ -59,7 +59,7 @@ namespace prueba_sourcecol
         {
             int[] arrayNumber;
 
-            Console.WriteLine("ingrese numeros con espacios");
+            Console.WriteLine("punto 3 - ingrese numeros con espacios");
 
             string dato = Console.ReadLine();
 
@@ -80,7 +80,7 @@ namespace prueba_sourcecol
 
             Punto4 punto4 = new Punto4();
 
-            Console.WriteLine("ingrese los datos del carro");
+            Console.WriteLine("punto 4 - ingrese los datos del carro");
 
             do
             {
@@ -126,7 +126,61 @@ namespace prueba_sourcecol
         
         static void Main(string[] args)
         {
+            bool closeMenu = false;
+            bool showMenu = true;
 
+            do
+            {
+
+                if (showMenu)
+                {
+                    Console.WriteLine("Menu");
+                    Console.WriteLine("1 - punto 1: ingresa una cadena de texto esto cortara en el caracter numero 20 o si corta una palabra pongra ... donde la corto");
+                    Console.WriteLine("2 - punto 2: validara si un numero cumple con la serie de fibonacci");
+                    Console.WriteLine("3 - punto 3: ingresa un arreglo de numero y los ordena de mayor a menos y muestra cuantos pares ahi");
+                    Console.WriteLine("4 - punto 4: ingresa una lista de carros y muestra los autos cuyo modelo sea maximo de hace 5 años");
+                    Console.WriteLine("5 - punto 5: muestra los nombre de cada personaje de Rick & Morty");
+
+                    showMenu = false;
+                }
+
+                Console.WriteLine("ingrese una opcion del ( 1 al 5 ) o 6 para volver a mostrar el menu, para salir dijite otro numero");
+                string numberMenu = Console.ReadLine();
+
+                switch (numberMenu)
+                {
+                    case "1":
+                        punto1();
+                        break;
+
+                    case "2":
+                        punto2();
+                        break;
+
+                    case "3":
+                        punto3();
+                        break;
+
+                    case "4":
+                        punto4();
+                        break;
+
+                    case "5":
+                        punto5();
+                        break;
+
+                    case "6":
+                        showMenu = true;
+                        break;
+
+                    default:
+                        closeMenu = true;
+                        break;
+                }
+
+            } while (!closeMenu);
+
+            Console.WriteLine("Prueba tecnica - Cristian Cuartas");
         }
     }
 }
