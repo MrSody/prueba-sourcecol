@@ -30,11 +30,6 @@ namespace prueba_sourcecol
 
                 dynamic json = JsonConvert.DeserializeObject(responseFromServer);
 
-                foreach (var e in json.results)
-                {
-                    Console.WriteLine(e.name);
-                }
-
                 // limpia
                 reader.Close();
                 dataStream.Close();
