@@ -6,7 +6,7 @@ namespace prueba_sourcecol
     internal class Program
     {
 
-        static void punto2(int number)
+        static void punto2()
         {
             int numberFibonacci = 0;
             Punto2 punto2 = new Punto2();
