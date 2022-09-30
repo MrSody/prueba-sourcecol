@@ -2,44 +2,29 @@
 using System.IO;
 using System.Net;
 using Newtonsoft.Json;
+using static prueba_sourcecol.Punto5;
 
 namespace prueba_sourcecol
 {
     internal class Program
     {
-        static void getCharacters()
+        static void punto5()
         {
-            WebRequest request = WebRequest.Create("https://rickandmortyapi.com/api/character");
+            Punto5 punto5 = new Punto5();
+            
+            dynamic characters = punto5.getCharacters();
 
-            try
+            Console.WriteLine("punto 5 - Nombre de personajes de Rick & Morty");
+
+            foreach (var character in characters.results)
             {
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                Stream dataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(dataStream);
-                string responseFromServer = reader.ReadToEnd();
-
-                dynamic json = JsonConvert.DeserializeObject(responseFromServer);
-
-                foreach (var e in json.results)
-                {
-                    Console.WriteLine(e.name);
-                }
-
-                // limpia
-                reader.Close();
-                dataStream.Close();
-                response.Close();
-            }
-            catch (WebException err)
-            {
-                Console.WriteLine("Fallo {0}", err);
+                Console.WriteLine(character.name);
             }
         }
 
         static void Main(string[] args)
         {
-            getCharacters();
+            
         }
     }
 }
