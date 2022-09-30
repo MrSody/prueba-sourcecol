@@ -1,42 +1,16 @@
 ﻿using System;
 using System.Linq;
+using static prueba_sourcecol.Punto3;
 
 namespace prueba_sourcecol
 {
     internal class Program
     {
-        static int[] numberOrder(int[] arrayNumber)
+        static int[] convertTextToArrayInt(string text)
         {
-            int countPares = 0;
-            string listNumber = "";
-
-            Array.Sort(arrayNumber);
-            Array.Reverse(arrayNumber);
-
-            foreach (int dato in arrayNumber)
-            {
-                if (dato % 2 == 0)
-                {
-                    countPares++;
-                }
-
-                listNumber += dato.ToString() + " ";
-            }
-
-            Console.WriteLine("cantidad de pares {0}", countPares);
-
-            Console.WriteLine("Lista de numeros: {0}", listNumber);
-
-            return arrayNumber;
-        }
-
-        static int[] createArrayNumber(string datos)
-        {
-            string[] textNumber;
             int[] arrayNumber = new int[] { };
 
-
-            textNumber = datos.Split(' ');
+            string[] textNumber = text.Split(' ');
 
             foreach (string data in textNumber)
             {
@@ -50,16 +24,27 @@ namespace prueba_sourcecol
             return arrayNumber;
         }
 
-        static void Main(string[] args)
+        static void punto3()
         {
-            int[] arrayNumber = new int[] { };
+            int[] arrayNumber;
 
             Console.WriteLine("ingrese numeros con espacios");
 
             string dato = Console.ReadLine();
-            arrayNumber = createArrayNumber(dato);
 
-            numberOrder(arrayNumber);
+            arrayNumber = convertTextToArrayInt(dato);
+
+            Punto3 punto3 = new Punto3(arrayNumber);
+
+            // Get cantidad de pares
+            Console.WriteLine("cantidad de pares: {0}", punto3.getCountPares());
+
+            // Get array de numeros ordenados de mayor a menor
+            Console.WriteLine("Lista de numeros: {0}", string.Join(" ", punto3.numberShort()));
+        }
+
+        static void Main(string[] args)
+        {
 
         }
     }
