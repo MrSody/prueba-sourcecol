@@ -1,63 +1,24 @@
 ﻿using System;
 using System.Linq;
+using static prueba_sourcecol.Punto1;
 
 namespace prueba_sourcecol
 {
     internal class Program
     {
-
-        static string textShort(string textFull)
+        static void punto1()
         {
-            string textShort = "";
+            Punto1 punto1 = new Punto1();
 
-            if ( textFull.Length > 20 )
-            {
-                string[] textList = textFull.Split(' ');
+            Console.WriteLine("Punto 1 - Ingrese una cadena de texto");
+            string textFull = Console.ReadLine();
 
-                int countCharacters = 0;
-
-                do
-                {
-                    foreach( string data in textList)
-                    {
-                        countCharacters += data.Length;
-
-                        if ( countCharacters < 20 )
-                        {
-                            textShort += data +" ";
-                        } else
-                        {
-                            if ( (countCharacters - 20 ) == 0)
-                            {
-                                textShort += data + " ";
-                            } else
-                            {
-                                textShort += data.Substring(0, (data.Length - (countCharacters  - 20)));
-                                textShort += "...";
-                            }
-                            break;
-                        }
-                        countCharacters++;
-                    }
-
-                } while (countCharacters < 20);
-
-            } else
-            {
-                return textFull;
-            }
-
-            return textShort;
+            Console.WriteLine(punto1.getTextShort(textFull));
         }
 
         static void Main(string[] args)
         {
-            string textFullPunt1 = "";
 
-            Console.WriteLine("punto 1");
-            textFullPunt1 = Console.ReadLine();
-
-            Console.WriteLine( textShort(textFullPunt1) );
 
         }
     }
