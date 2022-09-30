@@ -1,32 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using static prueba_sourcecol.Car;
+using static prueba_sourcecol.Punto4;
 using System.Linq;
 
 namespace prueba_sourcecol
 {
     internal class Program
     {
-        static List<Car> carModelMayorCinco(List<Car> listCar)
-        {
-            int modelMax = 2022;
-
-            var listCarMayorCinco = listCar.Where(x => x.Model >= (modelMax - 5)).ToList();
-
-            foreach (var dato in listCarMayorCinco)
-            {
-                Console.WriteLine("marca {0}", dato.Brand);
-                Console.WriteLine("modelo {0}", dato.Model);
-                Console.WriteLine("color {0}", dato.Color);
-            }
-
-            return listCar.Where(x => x.Model < (modelMax - 5)).ToList();
-        }
-
-        static List<Car> addCars()
+        static void punto4()
         {
             bool addCar = true;
-            List<Car> listCar = new List<Car>() { };
+
+            Punto4 punto4 = new Punto4();
+
+            Console.WriteLine("ingrese los datos del carro");
 
             do
             {
@@ -39,37 +27,26 @@ namespace prueba_sourcecol
                 Console.WriteLine("Ingrese el color");
                 string color = Console.ReadLine();
 
-                listCar.Add(
-                    new Car()
-                    {
-                        Brand = brand,
-                        Model = model,
-                        Color = color,
-                    }
-                );
+                punto4.addCar(brand, model, color);
 
                 Console.WriteLine("Desea ingresar otro carro Y/N");
                 string newCar = Console.ReadLine();
 
-                if (newCar.ToLower() == "n")
+                if (newCar.ToLower() != "y")
                 {
                     addCar = false;
                 }
 
             } while (addCar);
 
-            return listCar;
+            // Get autos con modelo de hace 5 años
+            Console.WriteLine("Autos cuyo modelo es maximo de hace 5 años");
+            Console.WriteLine(punto4.carModelMayorCinco());
         }
 
         static void Main(string[] args)
         {
-            List<Car> listCar = new List<Car>() { };
 
-            Console.WriteLine("ingrese los datos del carro");
-
-            listCar = addCars();
-
-            var listNewCars = carModelMayorCinco(listCar);
         }
     }
 }
