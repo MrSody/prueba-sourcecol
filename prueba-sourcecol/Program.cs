@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using static prueba_sourcecol.Punto1;
@@ -6,11 +8,14 @@ using static prueba_sourcecol.Punto2;
 using static prueba_sourcecol.Punto3;
 using static prueba_sourcecol.Car;
 using static prueba_sourcecol.Punto4;
+using Newtonsoft.Json;
+using static prueba_sourcecol.Punto5;
 
 namespace prueba_sourcecol
 {
     internal class Program
     {
+    
         static int[] convertTextToArrayInt(string text)
         {
             int[] arrayNumber = new int[] { };
@@ -105,9 +110,23 @@ namespace prueba_sourcecol
             Console.WriteLine(punto4.carModelMayorCinco());
         }
         
+        static void punto5()
+        {
+            Punto5 punto5 = new Punto5();
+            
+            dynamic characters = punto5.getCharacters();
+
+            Console.WriteLine("punto 5 - Nombre de personajes de Rick & Morty");
+
+            foreach (var character in characters.results)
+            {
+                Console.WriteLine(character.name);
+            }
+        }
+        
         static void Main(string[] args)
         {
-        
+
         }
     }
 }
